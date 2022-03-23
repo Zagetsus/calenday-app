@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const InfosContainer = styled.div`
   display: flex;
   justify-content: flex-end;
-  margin-bottom: 38px;
+  margin-bottom: 68px;
 `;
 
 export const Infos = styled.div`
@@ -17,3 +17,16 @@ export const Infos = styled.div`
     max-width: 200px;
   }
 `;
+
+export const SchedulesList = styled.div`
+  display: flex;
+  padding-bottom: 10px;
+  overflow-x: auto;
+  max-width: calc(100vw - 281px - 24px - 24px);
+  
+  > div {
+    &:not(:last-child){
+      margin-right: 24px;
+    }
+  }
+`

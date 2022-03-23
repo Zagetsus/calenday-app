@@ -1,11 +1,13 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import Input from "../../componentes/Input";
 import {ButtonField, Container, Content, InputField, LoginTextContainer, Subtitle, Title} from "./styles";
 import Button from "../../componentes/Button";
 import useForm from "../../hooks/useForm";
+import {useToast} from "../../hooks/useToast";
+import {useAuth} from "../../hooks/useAuth";
 
 const Login: React.FC = () => {
-    const {form, onChange, onBlur, error} = useForm({
+    const {form, onChange, onBlur, error, validateForm} = useForm({
         email: {
             type: 'email',
             required: true,
@@ -15,6 +17,31 @@ const Login: React.FC = () => {
             required: true
         }
     })
+
+    const { toast } = useToast();
+    const { signIn } = useAuth();
+
+    const handleSubmit = useCallback((e) => {
+        try {
+            e.preventDefault()
+
+            if (!validateForm()) {
+                toast({
+                    type: 'error',
+                    description: 'Por favor, insira corretamente os seus dados.'
+                })
+                return false;
+            }
+
+
+            const {email, password} = form;
+
+            signIn({email, password})
+        } catch (e: any) {
+            console.log(e);
+        }
+    }, [form, signIn, toast, validateForm]);
+
     return (
         <Container>
             <Content>
@@ -22,7 +49,7 @@ const Login: React.FC = () => {
                     <Title>Entrar</Title>
                     <Subtitle>O gerenciador do seu salão</Subtitle>
                 </LoginTextContainer>
-                <form>
+                <form onSubmit={handleSubmit}>
                     <InputField>
                         <Input
                             value={form.email}

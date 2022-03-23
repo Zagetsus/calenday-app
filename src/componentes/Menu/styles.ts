@@ -5,6 +5,7 @@ export const Container = styled.div`
   height: 100%;
   padding: 33px 24px;
   border-right: 1px solid ${props => props.theme.colors.border};
+  background-color: ${props => props.theme.colors.white};
 `;
 
 export const Title = styled.h1`

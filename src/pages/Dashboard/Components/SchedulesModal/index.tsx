@@ -5,6 +5,7 @@ import Customer from "./stages/Customer";
 import Button from "../../../../componentes/Button";
 import NewSchedules from "./stages/NewSchedules";
 import Confirmation from "./stages/Confirmation";
+import {useSchedules} from "../../pages/Schedules/hooks/useSchedules";
 
 interface Stages {
     customer: JSX.Element,
@@ -12,25 +13,24 @@ interface Stages {
     confirmation: JSX.Element
 }
 
-type stageOptions = 'customer' | 'newSchedules' | 'confirmation'
-
 const SchedulesModal: React.FC = () => {
-    const [stageSelected, setStageSelected] = useState<stageOptions>('confirmation');
+    const {modal,setModal, stageSelected, nextStage} = useSchedules();
 
     const stages: Stages = useMemo(() => ({
         customer: <Customer />,
         newSchedules: <NewSchedules />,
         confirmation: <Confirmation />
     }), []);
+
     return (
-        <Modal open={true} onClose={() => console.log('teste')}>
+        <Modal open={modal} onClose={() => setModal(false) }>
             <Container>
                 <Header>
                     <Title>Criar novo agendamento</Title>
                 </Header>
                 {stages[stageSelected]}
                 <ButtonContainer>
-                    <Button expand>Avançar</Button>
+                    <Button onClick={nextStage} expand>Avançar</Button>
                 </ButtonContainer>
             </Container>
         </Modal>

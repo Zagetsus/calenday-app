@@ -8,6 +8,10 @@ const theme = {
         border: '#C8C8C8',
         placeholder: '#B1B1B1',
 
+        success: '#287D3C',
+
+        warning: '#B95000',
+
         error: '#C90528',
 
         white: '#FFFFFF',

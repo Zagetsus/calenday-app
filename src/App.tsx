@@ -4,13 +4,16 @@ import {ThemeProvider} from "styled-components";
 import GlobalStyles from "./styles/GlobalStyles";
 import RoutesChatto from "./routes";
 import {BrowserRouter} from "react-router-dom";
+import AppProvider from "./AppProvider";
 
 const App: React.FC = () => {
     return (
         <BrowserRouter>
             <ThemeProvider theme={theme}>
-                <GlobalStyles />
-                <RoutesChatto />
+                <AppProvider>
+                    <GlobalStyles/>
+                    <RoutesChatto/>
+                </AppProvider>
             </ThemeProvider>
         </BrowserRouter>
     );
