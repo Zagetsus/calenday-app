@@ -14,7 +14,7 @@ interface Stages {
 }
 
 const SchedulesModal: React.FC = () => {
-    const {modal,setModal, stageSelected, nextStage} = useSchedules();
+    const {modal,setModal, stageSelected} = useSchedules();
 
     const stages: Stages = useMemo(() => ({
         customer: <Customer />,
@@ -29,9 +29,7 @@ const SchedulesModal: React.FC = () => {
                     <Title>Criar novo agendamento</Title>
                 </Header>
                 {stages[stageSelected]}
-                <ButtonContainer>
-                    <Button onClick={nextStage} expand>Avançar</Button>
-                </ButtonContainer>
+
             </Container>
         </Modal>
     );

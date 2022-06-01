@@ -12,7 +12,8 @@ import CheckBox from "../CheckBox";
 import Radio from "../Radio";
 
 interface Option_I {
-    value: string | number;
+    id?: string | number;
+    value?: string | number;
     name: string;
     selected?: boolean;
     checked?: boolean;
@@ -81,14 +82,14 @@ const Select: React.FC<Props> = ({
     const selectOption = useCallback((option) => {
         setOpen(false);
 
-        if (!!onChange) onChange(option.value);
+        if (!!onChange) onChange(option.value || option.id);
 
         setActive(option);
         // eslint-disable-next-line
     }, [active]);
 
     const checkOption = useCallback((option) => {
-        if (!!onChange) onChange(option.value);
+        if (!!onChange) onChange(option.value || option.id);
         option.checked = !option.checked;
 
         setActive(getLabelToActivesCheck());
@@ -100,7 +101,7 @@ const Select: React.FC<Props> = ({
         options.map((option) => option.selected = false);
         option.selected = !option.selected;
 
-        if (!!onChange) onChange(option.value);
+        if (!!onChange) onChange(option.value || option.id);
 
         setActive(option);
         // eslint-disable-next-line
@@ -173,7 +174,7 @@ const Select: React.FC<Props> = ({
                 setActive(getLabelToActivesCheck());
             } else {
                 setSelectValue(value);
-                setActive(options.find((option) => option.value === value));
+                setActive(options.find((option) => option.value === value || option.id === value));
             }
         }
         // eslint-disable-next-line

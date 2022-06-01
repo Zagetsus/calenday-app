@@ -10,7 +10,7 @@ interface Props extends InputHTMLAttributes<HTMLInputElement>{
 
 const Input: React.FC<Props> = ({error, title, message, displayMessage = true, ...props}) => {
     return (
-        <Container>
+        <Container >
             {title && <Title>{title}</Title>}
             <InputText error={!!error} {...props} />
             {

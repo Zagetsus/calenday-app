@@ -23,10 +23,5 @@ export const SchedulesList = styled.div`
   padding-bottom: 10px;
   overflow-x: auto;
   max-width: calc(100vw - 281px - 24px - 24px);
-  
-  > div {
-    &:not(:last-child){
-      margin-right: 24px;
-    }
-  }
+  gap: 24px;
 `

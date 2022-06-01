@@ -8,11 +8,11 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  
+
   background-color: ${props => props.theme.colors.white};
   border-radius: 16px;
   padding: 40px 49px;
-`
+`;
 
 export const Header = styled.div`
   height: 102.92px;
@@ -37,3 +37,15 @@ export const ButtonContainer = styled.div`
     max-width: 200px;
   }
 `;
+
+export const ButtonLink = styled.button`
+  display: block;
+  color: ${({theme}) => theme.colors.primary};
+  text-decoration: underline;
+  margin: 24px auto;
+  cursor: pointer;
+`
+
+export const Column = styled.div`
+
+`

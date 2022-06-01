@@ -35,6 +35,11 @@ export const InputText = styled.input<IError>`
   &:focus {
     border: ${props => props.error ? `2px solid ${props.theme.colors.error}` : `2px solid ${props.theme.colors.primary}`};
   }
+  
+  &:disabled {
+    background-color: ${({theme}) => theme.colors.border};
+  }
+  
 `;
 
 export const MessageContainer = styled.div`

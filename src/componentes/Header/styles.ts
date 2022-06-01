@@ -13,6 +13,7 @@ export const Container = styled.header`
   padding: 20px 24px;
   height: 95px;
   width: calc(100vw - 266px);
+  z-index: 9;
 `;
 
 export const SearchContainer = styled.div`
